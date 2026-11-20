@@ -6,7 +6,7 @@ elements.ecosystem_seed = {
     density: 1400,
     tick: function(pixel) {
         if (!pixel.grown) {
-            pixel.grown = true;
+rown = true;
             let cx = pixel.x;
             let cy = pixel.y;
 
@@ -38,7 +38,6 @@ elements.ecosystem_seed = {
             // 2. Spawn fish inside the lake
             let lakeSpots = [
                 [-4, 2],
-,
                 [-2, 4],
                 [2, 4]
             ];
