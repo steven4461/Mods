@@ -44,7 +44,7 @@ elements.ecosystem_seed = {
         ];
 
         for (var i = 0; i < items.length; i++) {
-            safeSet(cx + items[i][0], cy + items[i][1], items[i][2]);
+            safeSet(cx + items[i], cy + items[i], items[i]);
         }
 
         if (pixel && !pixel.del) {
