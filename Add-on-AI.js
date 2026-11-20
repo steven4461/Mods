@@ -5,7 +5,7 @@
 // ========================================================
 (function() {
 // 1. Automatically load base Seed.js if it isn't already loaded
-const BASE_MOD_URL = "jsdelivr.net";
+const BASE_MOD_URL = "https://cdn.jsdelivr.net/gh/steven4461/Mods@Beta/Seed.js";
 if (!elements.ecosystem_seed && !document.getElementById("steven-base-seed-loader")) {
 const script = document.createElement("script");
 script.id = "steven-base-seed-loader";
