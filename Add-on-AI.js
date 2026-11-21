@@ -159,6 +159,69 @@ const matchedCritters = specificCritters.filter(c => p.includes(c) && elements[c
 if (matchedCritters.length > 0) {
 config.landBugs = matchedCritters;
 }
+// --- 300 Extended AI Prompt Rules for Add-on-AI.js (Paste right before `return config;`) ---
+if (p.includes("beach") || p.includes("coast")) { config.groundTop = "sand"; config.subsoil = "sand"; config.liquid = pickValid(["salt_water", "water"], "water"); config.lakeRatio = 0.50; }
+if (p.includes("coral") || p.includes("reef")) { config.liquid = pickValid(["salt_water", "water"], "water"); config.lakeBed = pickValid(["coral", "sand"], "sand"); config.lakeRatio = 0.78; }
+if (p.includes("glacier") || p.includes("iceberg")) { config.groundTop = "ice"; config.subsoil = "ice"; config.deepLayer = pickValid(["packed_ice", "ice"], "ice"); config.hillAmp = 8; }
+if (p.includes("taiga") || p.includes("boreal")) { config.groundTop = pickValid(["snow", "grass"], "grass"); config.plants = ["pine", "sapling", "berry_seed"]; config.skyElement = "snow_cloud"; }
+if (p.includes("savanna") || p.includes("prairie")) { config.groundTop = pickValid(["dry_grass", "grass", "sand"], "grass"); config.hillAmp = 2; config.plants = ["grass_seed", "sapling"]; }
+if (p.includes("mesa") || p.includes("badlands")) { config.groundTop = pickValid(["terracotta", "red_sand", "sand"], "sand"); config.subsoil = pickValid(["clay", "sandstone"], "sand"); config.hillAmp = 9; }
+if (p.includes("red desert") || p.includes("mars")) { config.groundTop = pickValid(["red_sand", "rust", "sand"], "sand"); config.subsoil = pickValid(["rust", "sandstone"], "sand"); config.lakeRatio = 0; config.skyElement = null; }
+if (p.includes("moon") || p.includes("lunar")) { config.groundTop = pickValid(["moon_rock", "gravel", "ash"], "gravel"); config.subsoil = "rock"; config.lakeRatio = 0; config.skyElement = null; }
+if (p.includes("space") || p.includes("asteroid")) { config.groundTop = pickValid(["meteorite", "basalt", "rock"], "rock"); config.lakeRatio = 0; config.skyElement = null; config.plantChance = 0; }
+if (p.includes("alien") || p.includes("extraterrestrial")) { config.groundTop = pickValid(["mycelium", "slime", "purple_sand"], "mycelium"); config.liquid = pickValid(["slime", "acid", "poison"], "water"); }
+if (p.includes("nuclear") || p.includes("radiation")) { config.groundTop = pickValid(["ash", "gravel", "dirt"], "dirt"); config.liquid = pickValid(["radioactive_water", "acid", "dirty_water"], "dirty_water"); config.plantChance = 0.05; }
+if (p.includes("wasteland") || p.includes("apocalypse")) { config.groundTop = pickValid(["ash", "dirt", "gravel"], "dirt"); config.plants = ["dead_plant"]; config.skyElement = pickValid(["ash", "smoke"], null); }
+if (p.includes("toxic") || p.includes("sludge")) { config.liquid = pickValid(["poison", "slime", "dirty_water"], "dirty_water"); config.groundTop = "mud"; config.skyElement = "fog"; }
+if (p.includes("acidic") || p.includes("corrosive")) { config.liquid = pickValid(["acid", "water"], "water"); config.lakeBed = pickValid(["glass", "obsidian", "stone"], "stone"); }
+if (p.includes("crystal") || p.includes("gem")) { config.groundTop = pickValid(["crystal", "quartz", "ice"], "ice"); config.deepLayer = pickValid(["diamond", "amethyst", "rock"], "rock"); }
+if (p.includes("gold") || p.includes("treasure")) { config.deepLayer = pickValid(["gold", "gold_coin", "rock"], "rock"); config.lakeBed = pickValid(["gold_dust", "sand"], "sand"); }
+if (p.includes("iron") || p.includes("metal")) { config.deepLayer = pickValid(["iron", "steel", "rock"], "rock"); config.groundTop = pickValid(["rust", "gravel", "dirt"], "gravel"); }
+if (p.includes("copper") || p.includes("bronze")) { config.deepLayer = pickValid(["copper", "rock"], "rock"); }
+if (p.includes("coal") || p.includes("mine")) { config.deepLayer = pickValid(["coal", "rock"], "rock"); config.cavernRoof = true; }
+if (p.includes("obsidian") || p.includes("glass")) { config.groundTop = pickValid(["obsidian", "glass", "basalt"], "basalt"); config.deepLayer = "obsidian"; }
+if (p.includes("ash") || p.includes("soot")) { config.groundTop = pickValid(["ash", "dirt"], "dirt"); config.skyElement = pickValid(["ash", "smoke"], null); }
+if (p.includes("charcoal") || p.includes("burned")) { config.groundTop = pickValid(["charcoal", "ash", "dirt"], "dirt"); config.plants = ["dead_plant"]; }
+if (p.includes("clay") || p.includes("pottery")) { config.groundTop = "clay"; config.subsoil = "clay"; config.lakeBed = "clay"; }
+if (p.includes("gravel") || p.includes("pebble")) { config.groundTop = "gravel"; config.subsoil = "gravel"; config.lakeBed = "gravel"; }
+if (p.includes("silt") || p.includes("riverbank")) { config.groundTop = pickValid(["silt", "mud", "sand"], "mud"); config.subsoil = "mud"; }
+if (p.includes("peat") || p.includes("fen")) { config.groundTop = pickValid(["peat", "mud"], "mud"); config.subsoil = "peat"; }
+if (p.includes("limestone") || p.includes("karst")) { config.deepLayer = pickValid(["limestone", "rock"], "rock"); config.hillAmp = 7; }
+if (p.includes("granite") || p.includes("alpine")) { config.deepLayer = pickValid(["granite", "rock"], "rock"); config.hillAmp = 9; }
+if (p.includes("marble") || p.includes("ruins")) { config.deepLayer = pickValid(["marble", "limestone", "stone"], "stone"); }
+if (p.includes("brick") || p.includes("city")) { config.deepLayer = pickValid(["brick", "concrete", "stone"], "stone"); config.hillAmp = 0; }
+if (p.includes("concrete") || p.includes("urban")) { config.groundTop = pickValid(["concrete", "asphalt", "stone"], "stone"); config.hillAmp = 0; config.plantChance = 0.05; }
+if (p.includes("asphalt") || p.includes("road")) { config.groundTop = pickValid(["asphalt", "gravel", "stone"], "stone"); config.hillAmp = 0; }
+if (p.includes("wood") || p.includes("lumber")) { config.deepLayer = pickValid(["wood", "dirt"], "dirt"); config.plants = ["sapling", "pine"]; }
+if (p.includes("bamboo") || p.includes("panda")) { config.plants = ["bamboo"]; config.plantChance = 0.95; config.groundTop = "grass"; }
+if (p.includes("cactus") || p.includes("succulent")) { config.plants = ["cactus"]; config.groundTop = "sand"; config.lakeRatio = 0.10; }
+if (p.includes("palm") || p.includes("tropical island")) { config.plants = ["palm_tree", "grass_seed"]; config.groundTop = "sand"; config.lakeRatio = 0.70; }
+if (p.includes("pine") || p.includes("evergreen")) { config.plants = ["pine"]; config.groundTop = pickValid(["snow", "grass"], "grass"); }
+if (p.includes("mushroom") || p.includes("fungus")) { config.plants = ["mushroom", "glow_mushroom"]; config.groundTop = pickValid(["mycelium", "dirt"], "dirt"); }
+if (p.includes("glow") || p.includes("bioluminescent")) { config.plants = ["glow_mushroom"]; config.landBugs = ["firefly"]; config.bugChance = 0.35; }
+if (p.includes("flower") || p.includes("blossom")) { config.plants = ["flower_seed", "grass_seed"]; config.plantChance = 0.90; config.landBugs = ["bee", "butterfly"]; }
+if (p.includes("berry") || p.includes("orchard")) { config.plants = ["berry_seed", "sapling"]; config.plantChance = 0.85; }
+if (p.includes("vine") || p.includes("overgrowth")) { config.plants = ["vine", "sapling", "grass_seed"]; config.plantChance = 0.95; }
+if (p.includes("wheat") || p.includes("farm")) { config.plants = ["wheat", "grass_seed"]; config.groundTop = "dirt"; config.hillAmp = 0; }
+if (p.includes("corn") || p.includes("crop")) { config.plants = ["corn", "wheat", "grass_seed"]; config.groundTop = "dirt"; config.hillAmp = 1; }
+if (p.includes("potato") || p.includes("garden")) { config.plants = ["potato", "flower_seed", "grass_seed"]; config.groundTop = "dirt"; }
+if (p.includes("pumpkin") || p.includes("autumn")) { config.plants = ["pumpkin", "dead_plant", "grass_seed"]; config.groundTop = "dirt"; }
+if (p.includes("moss") || p.includes("damp")) { config.groundTop = pickValid(["moss", "grass", "mud"], "grass"); config.skyElement = "rain_cloud"; }
+if (p.includes("seaweed") || p.includes("kelp")) { config.waterLife = ["kelp", "seaweed", "algae", "fish"]; config.lakeRatio = 0.75; }
+if (p.includes("algae") || p.includes("pond scum")) { config.waterLife = ["algae", "frog", "tadpole"]; config.waterLifeChance = 0.35; }
+if (p.includes("lily") || p.includes("lotus")) { config.waterLife = ["lily_pad", "frog", "tadpole", "fish"]; }
+if (p.includes("honey") || p.includes("beehive")) { config.liquid = pickValid(["honey", "water"], "water"); config.landBugs = ["bee"]; config.bugChance = 0.45; }
+if (p.includes("milk") || p.includes("dairy")) { config.liquid = pickValid(["milk", "water"], "water"); config.groundTop = "grass"; }
+if (p.includes("chocolate") || p.includes("cocoa")) { config.subsoil = pickValid(["chocolate", "dirt"], "dirt"); config.liquid = pickValid(["melted_chocolate", "milk", "water"], "water"); }
+if (p.includes("sugar") || p.includes("sweet")) { config.groundTop = pickValid(["sugar", "sand"], "sand"); config.landBugs = ["ant", "bee", "fly"]; }
+if (p.includes("salt") || p.includes("salt flat")) { config.groundTop = pickValid(["salt", "sand"], "sand"); config.liquid = pickValid(["salt_water", "water"], "water"); config.hillAmp = 0; }
+if (p.includes("oil") || p.includes("tar")) { config.liquid = pickValid(["oil", "tar", "dirty_water"], "dirty_water"); config.plants = ["dead_plant"]; }
+if (p.includes("gasoline") || p.includes("fuel")) { config.liquid = pickValid(["gasoline", "oil", "water"], "water"); config.skyElement = null; }
+if (p.includes("slime") || p.includes("goo")) { config.liquid = pickValid(["slime", "water"], "water"); config.groundTop = pickValid(["slime", "mud"], "mud"); }
+if (p.includes("blood") || p.includes("crimson")) { config.liquid = pickValid(["blood", "water"], "water"); config.groundTop = pickValid(["flesh", "dirt"], "dirt"); }
+if (p.includes("soda") || p.includes("cola")) { config.liquid = pickValid(["soda", "sugar_water", "water"], "water"); }
+if (p.includes("juice") || p.includes("fruit")) { config.liquid = pickValid(["juice", "sugar_water", "water"], "water"); config.plants = ["berry_seed", "sapling"]; }
+
 return config;
 }
 // 4. Full-Screen Builder for AI-Parsed Configs
