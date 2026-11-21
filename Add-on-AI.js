@@ -92,10 +92,10 @@ config.waterLife = ["frog", "tadpole", "algae", "fish", "leech"];
 } else if (p.includes("cavern") || p.includes("cave") || p.includes("underground") || p.includes("mushroom") || p.includes("glow")) {
 config.groundTop = pickValid(["mycelium", "dirt"], "dirt");
 config.subsoil = "dirt";
-config.deepLayer = pickValid(["basalt", "stone", "rock"], "stone");
+config.deepLayer = pickValid(["rock_wall", "rock", "stone"], "rock"); // Solid ceiling instead of basalt powder
 config.skyElement = null;
 config.cavernRoof = true;
-config.plants = ["mushroom", "glow_mushroom", "vine"];
+config.plants = ["mushroom", "moss", "vine"];
 config.landBugs = ["spider", "firefly", "beetle", "ant", "snail", "slug"];
 } else if (p.includes("jungle") || p.includes("rainforest") || p.includes("tropical")) {
 config.groundTop = "grass";
