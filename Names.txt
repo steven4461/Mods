@@ -1,0 +1,3 @@
+https://cdn.jsdelivr.net/gh/steven4461/Mods@Beta/Add-on-AI.js
+https://cdn.jsdelivr.net/gh/steven4461/Mods@Beta/seed.js
+https://cdn.jsdelivr.net/gh/steven4461/Mods@main/seed.js
